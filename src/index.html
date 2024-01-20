@@ -1,52 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Tailwind.css -->
-    <link href="./output.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet" />
     <!-- Global.css -->
-    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/global.css" />
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Pokedex</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="content p-[1rem] h-screen overflow-auto">
-        <h1 class=" text-3xl font-extrabold pb-[1rem] ml-1 mb-2">Pokedex</h1>
-        <ol class=" grid gap-2 ml-grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            <li class="pokemons relative overflow-hidden">
-                <span class="number absolute right-5 top-2 tracking-wide font-bold text-black opacity-10">
-                    #001
-                </span>
-                <span class="name font-semibold opacity-90">Bulbasaur</span>
-
-                <div class=" detail flex">
-                    <ol class="types">
-                        <li class="type">grass</li>
-                        <li class="type">poison</li>
-                    </ol>
-
-                    <img class=" z-10 ml-auto -mt-4 -mr-2 max-h-full h-[92px]"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                        alt="Bubasauro">
-                </div>
-
-                <img class=" absolute min-h-44 z-0 top-3 -right-12 opacity-65" 
-                    src="./assets/imgs/emblema.png"
-                    alt="Pokemon Emblem">
-            </li>
-        </ol>
+      <h1 class="text-3xl font-extrabold pb-[1rem] ml-1 mb-2">Pokedex</h1>
+      <ol id="pokelist" class="grid gap-2 ml-grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"></ol>
     </section>
 
     <!-- Main.js -->
     <script src="./assets/js/main.js"></script>
-</body>
-
+  </body>
 </html>
