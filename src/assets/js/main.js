@@ -1,6 +1,3 @@
-const offset = 0;
-const limit = 100;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 const pokeList = document.getElementById('pokelist')
 
 // Colours
@@ -38,37 +35,40 @@ function convertPokeToHtml(pokemon) {
   let capitalizedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
 
   return `
-    <li class="pokemons relative overflow-hidden cursor-pointer" style="background-color: ${colours[typeColor]}">
-    <span class="number absolute right-5 top-2 tracking-wide font-bold text-black opacity-10">
-        #${pokemon.id}
-    </span>
-    <span class="name font-semibold opacity-90">${capitalizedPokemonName}</span>
-
-    <div class=" detail flex">
-        <ol class="types">
-            ${typesHTML}
-        </ol>
-
-        <img class=" z-10 ml-auto -mt-4 -mr-2 max-h-full h-[92px]"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"
-            alt=${pokemon.name}>
-    </div>
-
-    <img class=" absolute min-h-44 z-0 top-3 -right-12 opacity-65" 
-        src="./assets/imgs/emblema.png"
-        alt="Pokemon Emblem">
-    </li>
+    <a onclick="redirectToPokemonDetails(${pokemon.id}); event.preventDefault();">
+          <li class="pokemons relative overflow-hidden cursor-pointer" style="background-color: ${colours[typeColor]}">
+            <span class="number absolute right-5 top-2 tracking-wide font-bold text-black opacity-10">
+                #${pokemon.id}
+            </span>
+            <span class="name font-semibold opacity-90">${capitalizedPokemonName}</span>
+            <div class=" detail flex">
+                <ol class="types">
+                    ${typesHTML}
+                </ol>
+                <img class=" z-10 ml-auto -mt-4 -mr-2 max-h-full h-[92px]"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"
+                    alt=${pokemon.name}>
+            </div>
+            <img class=" absolute min-h-44 z-0 top-3 -right-12 opacity-65"
+                src="./assets/imgs/emblema.png"
+                alt="Pokemon Emblem">
+            </li>
+        </a>
     `;
 }
 
-async function pokeInfo(url) {
-  pokeApi.getPokeInfo(url).then(async (pokeInfo) => {
-    pokeList.innerHTML += convertPokeToHtml(pokeInfo);
-  })
+function redirectToPokemonDetails(pokemonId) {
+  window.location.href = `./pages/details.html?${pokemonId}`;
 }
 
-pokeApi.getPokemons().then(async (pokemons) => {
-  for (const pokemon of pokemons) {
-    await pokeInfo(pokemon.url);
-  }
-})
+pokeApi.getPokemons().then((pokemons = []) => {
+  const promises = pokemons.map(async pokemon => {
+    const pokeInfo = await pokeApi.getPokeInfo(pokemon.url);
+    return convertPokeToHtml(pokeInfo);
+  });
+
+  Promise.all(promises).then((listItems) => {
+    const newHtml = listItems.join('');
+    pokeList.innerHTML += newHtml;
+  });
+});

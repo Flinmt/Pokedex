@@ -16,17 +16,18 @@
       rel="stylesheet"
     />
 
-    <title>Pokedex</title>
+    <title>Pokelist</title>
   </head>
 
   <body>
-    <section class="content p-[1rem] h-screen overflow-auto">
-      <h1 class="text-3xl font-extrabold pb-[1rem] ml-1 mb-2">Pokedex</h1>
+    <section class="content relative p-[1rem] h-screen overflow-y-auto overflow-x-hidden z-10">
+      <img src="./assets/imgs/emblema.png" alt="emblema" class="fixed h-80 z-0 -left-20 -top-28 opacity-35">
+      <img src="./assets/imgs/emblema.png" alt="emblema" class="fixed h-80 z-0 -right-20 -bottom-28 opacity-35">
+      <h1 class="text-3xl font-extrabold p-[.5rem] mb-2">Pokedex</h1>
       <ol id="pokelist" class="grid gap-2 ml-grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"></ol>
     </section>
 
     <!-- Main.js -->
-    <script src="./assets/js/colours.js"></script>
     <script src="./assets/js/pokeApi.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
