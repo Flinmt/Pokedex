@@ -25,7 +25,7 @@ const colours = {
 
 function convertPokeToHtml(pokemon) {
   let typesHTML = '';
-  let typeColor = pokemon.types[0].type.name;
+  let typeColor = colours[pokemon.types[0].type.name];
 
   pokemon.types.forEach(type => {
     typesHTML += `<li class="type">${type.type.name}</li>`;
@@ -36,7 +36,7 @@ function convertPokeToHtml(pokemon) {
 
   return `
     <a onclick="redirectToPokemonDetails(${pokemon.id}); event.preventDefault();">
-          <li class="pokemons relative overflow-hidden cursor-pointer" style="background-color: ${colours[typeColor]}">
+          <li class="pokemons relative overflow-hidden cursor-pointer" style="background-color: ${typeColor}">
             <span class="number absolute right-5 top-2 tracking-wide font-bold text-black opacity-10">
                 #${pokemon.id}
             </span>
