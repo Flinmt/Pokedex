@@ -37,3 +37,15 @@ body {
     font-size: x-small;
     opacity: 0.8;
 }
+
+progress::-webkit-progress-bar {
+    margin-top: 7px;
+    background-color: #eee;
+    border-radius: 50px;
+    height: 3px;
+  }
+
+  progress::-webkit-progress-value {
+    border-radius: 50px;
+    background: green;
+  }
