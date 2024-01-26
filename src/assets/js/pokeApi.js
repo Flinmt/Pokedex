@@ -1,6 +1,6 @@
 const pokeApi = {}
 
-pokeApi.getPokemons = async (offset = 0, limit = 50) => {
+pokeApi.getPokemons = async (offset = 0, limit = 151) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
     try {

@@ -63,7 +63,6 @@ function redirectToPokemonDetails(pokemonId) {
 
 pokeApi.getPokemons().then((pokemons = []) => {
   const promises = pokemons.map(async pokemon => {
-    console.log(pokemon.url)
     const pokeInfo = await pokeApi.getPokeInfo(pokemon.url);
     return convertPokeToHtml(pokeInfo);
   });
